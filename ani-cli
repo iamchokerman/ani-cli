@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # version number
-VERSION="1.7.0"
+VERSION="syncplay"
 
 
 # history file path
@@ -442,7 +442,7 @@ open_episode () {
 			die "Video URL not found"
 		fi
 
-
+player_args="/Applications/Syncplay.app/Contents/MacOS/syncplay -a syncplay.pl:8996 -r ilm_room -n chokerman"
 
 		case $player_fn in
 			vlc)
@@ -456,11 +456,10 @@ open_episode () {
 				;;
 			*)
 				if [ "$auto_play" -eq 0 ]; then
-					nohup "$player_fn" --referrer="$dpage_link" "$video_url" --force-media-title="ani-cli: $anime_id ep $episode" > /dev/null 2>&1 &
+          nohup $player_args $video_url & 
 				else
 					inf "Currently playing $selection_id episode" "$episode/$last_ep_number, Range: $ep_choice_start-$ep_choice_end"
-					"$player_fn" --referrer="$dpage_link" "$video_url" --force-media-title="ani-cli: $anime_id ep $episode" > /dev/null 2>&1
-					sleep 2
+          nohup $player_args $video_url &
 				fi
 				;;
 		esac
@@ -503,7 +502,7 @@ scrape=query
 download_dir="."
 choice=""
 
-while getopts 'vq:dp:chDUVa:' OPT; do
+while getopts 'vsq:dp:chDUVa:' OPT; do
 	case $OPT in
 		h)
 			help_text
@@ -511,7 +510,6 @@ while getopts 'vq:dp:chDUVa:' OPT; do
 			;;
 		d)
 			is_download=1
-			select_first=1
 			;;
 		a)
 			ep_choice_to_start=$OPTARG
@@ -567,10 +565,7 @@ case $scrape in
 			prompt "Search Anime"
 			query="$REPLY $REPLY2"
 		else
-			if [ -n "$ep_choice_to_start" ] ; then
-				REPLY=1
-				select_first=1
-			fi
+			[ -n "$ep_choice_to_start" ] && select_first=1
 			query=$*
 		fi
 		search_results=$(search_anime "$query")
@@ -689,4 +684,4 @@ else
 	wait $!
 	exit
 fi
-done
+d
