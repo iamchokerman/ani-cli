@@ -442,7 +442,7 @@ open_episode () {
 			die "Video URL not found"
 		fi
 
-player_args="/Applications/Syncplay.app/Contents/MacOS/syncplay -a syncplay.pl:8996 -r ilm_room -n chokerman"
+player_args="/Applications/Syncplay.app/Contents/MacOS/syncplay --no-gui"
 
 		case $player_fn in
 			vlc)
@@ -684,4 +684,4 @@ else
 	wait $!
 	exit
 fi
-d
+done
