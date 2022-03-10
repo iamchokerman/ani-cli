@@ -8,6 +8,7 @@
 <br>
 <a href="https://discord.gg/aqu7GpqVmR"><img src="https://invidget.switchblade.xyz/aqu7GpqVmR"></a>
 <br>
+<a href="https://github.com/ura43"><img src="https://img.shields.io/badge/lead-ura43-lightblue"></a>
 <a href="https://github.com/CoolnsX"><img src="https://img.shields.io/badge/maintainer-CoolnsX-blue"></a>
 <a href="https://github.com/RaynardGerraldo"><img src="https://img.shields.io/badge/maintainer-RayGL-blue"></a>
 <br>
@@ -47,7 +48,6 @@ Also consider ani-cli-git
 ```sh
 yay -S ani-cli
 ```
-
 ### Linux
 
 Install dependencies [(See below)](#Dependencies)
@@ -67,32 +67,41 @@ Install homebrew [(Guide)](https://brew.sh/)
 brew tap iamchokerman/ani-cli
 brew install ani-cli
 ```
+*If you are upgrading from the old manual install process, you may have to remove the old ani-cli by running `sudo rm /usr/local/bin/ani-cli`*
 
 ### Windows
-*Note that the installation must be done inside powershell, not in cmd*
+
+*Note that the installation instruction below must be done inside 
+Powershell as **administrator**, not in Command Prompt*
 
 Install scoop [(Guide)](https://scoop.sh/)
-
 ```
 scoop bucket add extras
 mkdir -p "$env:USERPROFILE/.cache"
-scoop install ani-cli
+scoop install ani-cli -g
 ```
 
 *Make sure git bash is installed [(Install)](https://git-scm.com/download/win)*
 
-*You can run ani-cli from any Windows console, e.g Windows Terminal,Command Prompt,Powershell*
+*Run ani-cli in Git Bash (Running it in cmd or powershell may or may not work)*
 
 ### Android
 
 Install termux [(Guide)](https://termux.com/)
 
 ```sh
-pkg install git make termux-tools ncurses-utils openssl-tool -y
+pkg install git termux-tools ncurses-utils openssl-tool -y
 git clone https://github.com/pystardust/ani-cli && cd ani-cli
 cp ani-cli $PREFIX/bin/ani-cli
-echo 'termux-open "$2"' > $PREFIX/bin/mpv
+echo 'am start --user 0 -a android.intent.action.VIEW -d "$2" -n is.xyz.mpv/.MPVActivity' > $PREFIX/bin/mpv
+chmod +x $PREFIX/bin/mpv
 ```
+
+Install mpv-android [(Link)](https://play.google.com/store/apps/details?id=is.xyz.mpv)
+
+*Add ```referrer="https://gogoanime.fi"``` to mpv.conf (Open mpv app, goto three dots top right->Settings->Advanced-->Edit mpv.conf)* 
+
+*Note: VLC android doesn't support referrer option. So it will not work*
 
 ## Uninstall
 
