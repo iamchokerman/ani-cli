@@ -427,6 +427,7 @@ play_episode () {
 	# Run Command
 	if [ "$auto_play" -eq 0 ]; then
 		nohup "$@" > /dev/null 2>&1 &
+    python3 coding.py "$trackma_title" "$episode"
 	else
 		inf "Currently playing $display_name episode" "$episode/$last_ep_number, Range: $ep_choice_start-$ep_choice_end"
 		"$@" > /dev/null 2>&1
