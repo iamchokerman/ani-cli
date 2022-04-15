@@ -421,13 +421,13 @@ play_episode () {
 			;;
 		*)
 			trackma_title="$(printf '%s' "$anime_id" | tr '-' ' ' | awk '{for(i=1;i<=NF;i++){ $i=toupper(substr($i,1,1)) substr($i,2) }}1')"
-			set -- "$@" --referrer="$dpage_link" --force-media-title="$trackma_title $episode"
+			# set -- "$@" --referrer="$dpage_link" --force-media-title="$trackma_title $episode"
+      python3 coolkidzonly.py "$trackma_title" "$episode" "$video_url" "$dpage_link" "$player_fn"
 			;;
 	esac
 	# Run Command
 	if [ "$auto_play" -eq 0 ]; then
 		nohup "$@" > /dev/null 2>&1 &
-    python3 coding.py "$trackma_title" "$episode"
 	else
 		inf "Currently playing $display_name episode" "$episode/$last_ep_number, Range: $ep_choice_start-$ep_choice_end"
 		"$@" > /dev/null 2>&1
