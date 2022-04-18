@@ -1,26 +1,55 @@
 #!/usr/bin/env python3
-from pypresence import Presence
-import time
-import sys
 import subprocess
-import httpx
+import sys
+import time
 
-client_id = "963136145691140097"
-RPC = Presence(client_id)
-RPC.connect()
-content_title, *gibberish = sys.argv[1].rsplit(" ", 1)
-print(content_title)
-IMAGE = httpx.get(f"https://kitsu.io/api/edge/anime?filter[text]={content_title}").json()["data"][0]["attributes"]["posterImage"]["medium"]
-ACTIVITY = sys.argv[1]+" "+sys.argv[2]
-executable = sys.argv[5]
-process = subprocess.Popen(args=[executable, sys.argv[3],
-                                 "--referrer=" + sys.argv[4],
-                                 "--force-media-title=" +
-                                 sys.argv[1] + " " + sys.argv[2]])
-RPC.update(
-        details="Watching anime",
-        state=ACTIVITY,
-        large_image=IMAGE,
-        start=int(time.time()),
+import httpx
+from pypresence import Presence
+
+CLIENT_ID = "963136145691140097"
+ENDPONT = "https://kitsu.io/api/"
+
+rpc_client = Presence(CLIENT_ID)
+rpc_client.connect()
+
+http_client = httpx.Client(base_url=ENDPONT)
+
+
+(
+    _,
+    anime_name,
+    episode_count,
+    content_stream,
+    content_referer,
+    mpv_executable,
+    *_,
+) = sys.argv
+
+
+anime = http_client.get("edge/anime", params={"filter[text]": anime_name}).json()[
+    "data"
+]
+
+if not anime:
+    raise SystemExit()
+
+media = anime[0]["attributes"]
+media_title = "%s: %s" % (media["canonicalTitle"], episode_count)
+
+process = subprocess.Popen(
+    args=[
+        mpv_executable,
+        content_stream,
+        f"--referrer={content_referer}",
+        f"--force-media-title={media_title}",
+    ]
 )
+
+rpc_client.update(
+    details="Watching anime",
+    state=media_title,
+    large_image=media["posterImage"]["original"],
+    start=int(time.time()),
+)
+
 process.wait()
