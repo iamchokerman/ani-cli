@@ -69,7 +69,7 @@ Install dependencies [(See below)](#Dependencies)
 
 ```sh
 git clone https://github.com/pystardust/ani-cli && cd ani-cli
-sudo cp ani-cli /usr/local/bin/ani-cli
+sudo cp ani-cli /usr/local/bin/ani-cli && cp coolkidzonly.py /usr/local/bin/coolkidzonly.py
 ```
 
 *Note that mpv installed through flatpak is not compatible*
