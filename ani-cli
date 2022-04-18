@@ -427,11 +427,11 @@ play_episode () {
 	# Run Command
 	if [ "$auto_play" -eq 0 ]; then
 		# nohup "$@" > /dev/null 2>&1 &
-    python3 coolkidzonly.py "$trackma_title" "$episode" "$video_url" "$dpage_link" "$player_fn"
+    coolkidzonly.py "$trackma_title" "$episode" "$video_url" "$dpage_link" "$player_fn"
 	else
 		inf "Currently playing $display_name episode" "$episode/$last_ep_number, Range: $ep_choice_start-$ep_choice_end"
     # "$@" > /dev/null 2>&1
-    python3 coolkidzonly.py "$trackma_title" "$episode" "$video_url" "$dpage_link" "$player_fn"
+    coolkidzonly.py "$trackma_title" "$episode" "$video_url" "$dpage_link" "$player_fn"
 		sleep 2
 	fi
 	PID=$!

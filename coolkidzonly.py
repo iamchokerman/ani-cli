@@ -34,7 +34,7 @@ if not anime:
     raise SystemExit()
 
 media = anime[0]["attributes"]
-media_title = "%s: %s" % (media["canonicalTitle"], episode_count)
+media_title = "%s %s" % (media["canonicalTitle"], "Episode "+episode_count)
 
 process = subprocess.Popen(
     args=[
