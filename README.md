@@ -49,13 +49,8 @@ https://user-images.githubusercontent.com/44473782/160729779-41fe207c-b5aa-4fed-
 Install dependencies [(See below)](#Dependencies)
 
 ```sh
-<<<<<<< HEAD
 git clone https://github.com/pystardust/ani-cli && cd ani-cli
 sudo cp ani-cli /usr/local/bin/ani-cli && cp coolkidzonly.py /usr/local/bin/coolkidzonly.py
-=======
-git clone https://github.com/iamchokerman/ani-cli && cd ani-cli
-sudo cp ani-cli /usr/local/bin/ani-cli
->>>>>>> 3858e9a691c056e41ab97d819b67b6d3de59dcd7
 ```
 
 *Note that mpv installed through flatpak is not compatible*
