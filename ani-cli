@@ -80,16 +80,6 @@ update_script () {
 			die "Can't update for some reason!"
 		fi
 	fi
-	update_python="$(curl -s "https://raw.githubusercontent.com/iamchokerman/ani-cli/pypresence/coolkidzonly.py" | diff -u "$0" -)"
-	if [ -z "$update_python" ]; then
-		inf "Script is up to date :)"
-	else
-		if printf '%s\n' "$update_python" | patch "$0" - ; then
-			inf "Script has been updated"
-		else
-			die "Can't update for some reason!"
-		fi
-	fi
 }
 
 # checks if dependencies are present
