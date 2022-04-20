@@ -53,4 +53,3 @@ rpc_client.update(
 )
 
 process.wait()
-print("testing update")
