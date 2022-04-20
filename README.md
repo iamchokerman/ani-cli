@@ -39,6 +39,10 @@ https://user-images.githubusercontent.com/44473782/160729779-41fe207c-b5aa-4fed-
 ### Linux & Mac OS
 
 Install dependencies [(See below)](#Dependencies)
+(Make sure to uninstall ani-cli if you've had it before):
+```sh
+sudo rm /usr/local/bin/ani-cli
+```
 
 ```sh
 git clone https://github.com/iamchokerman/ani-cli/tree/pypresence && cd ani-cli
