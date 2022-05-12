@@ -1,0 +1,39 @@
+name: "Bug report"
+description: Ran into some unexpected behaviour? NOT FOR FEATURE REQUESTS
+title: ''
+labels: 'priority 2: medium, type: bug'
+assignees: ''
+
+body:
+- type: markdown
+  attributes:
+    label: Describe the bug
+    description: A clear and concise description of what the bug is. 
+    placeholder: "What happened? (ex: Downloading is broken)"
+  validations:
+      required: true
+- type: textarea
+  attributes:
+    label: Steps To Reproduce
+    description: "Steps to reproduce the behavior:"
+    value: |
+      1. Run `ani-cli -d flcl`
+      2. Choose 2 (fooly-cooly)
+      3. Choose episode 1
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Expected behavior
+    description: A clear and concise description of what you expected to happen.
+    placeholder: "What did you expect (ex: Downlading should work)"
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Screenshots
+    description: If applicable, add screenshots to help explain your problem.
+- type: textarea
+  attributes:
+    label: Additional context
+    description: Add any other context about the problem here.
