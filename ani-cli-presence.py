@@ -6,7 +6,7 @@ import re
 import httpx
 from pypresence import Presence
 
-CLIENT_ID = "963136145691140097"
+CLIENT_ID = "1151224762077544569"
 ENDPONT = "https://kitsu.io/api/"
 
 rpc_client = Presence(CLIENT_ID)
@@ -68,9 +68,20 @@ while True:
         details=media_title,
         state=position,
         large_image=media["posterImage"]["original"],
-        large_text=media_title,
+        large_text=f"Episode {episode_count}",
         small_image=small_image,
-        small_text=f"Episode {episode_count}"
+        small_text="Sponsored by chomsky",
+
+        buttons=[
+            {
+                "label": "Fork with discord presence",
+                "url": "https://github.com/justchokingaround/ani-cli/tree/pypresence",
+            },
+            {
+                "label": "ani-cli Discord",
+                "url": "https://discord.gg/aqu7GpqVmR",
+            },
+        ],
     )
 
     if process.poll() is not None:
