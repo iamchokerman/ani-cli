@@ -1,7 +1,7 @@
 
 Install ani-cli from this fork:
 ```sh
-sudo rm $(command -v ani-cli)
+sudo rm $(command -v ani-cli) &&
 sudo curl -sL github.com/justchokingaround/jerry/raw/presence/ani-cli -o /usr/local/bin/ani-cli &&
 sudo chmod +x /usr/local/bin/ani-cli
 ```
