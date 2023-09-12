@@ -75,7 +75,7 @@ while True:
         buttons=[
             {
                 "label": "Fork with discord presence",
-                "url": "https://github.com/justchokingaround/ani-cli/tree/pypresence",
+                "url": "https://github.com/justchokingaround/ani-cli/tree/presence",
             },
             {
                 "label": "ani-cli Discord",
