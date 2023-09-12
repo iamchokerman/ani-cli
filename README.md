@@ -1,3 +1,5 @@
+![image](https://github.com/justchokingaround/ani-cli/assets/44473782/2c761436-d5e1-4392-853b-e6eec7ea9d5a)
+
 
 Install ani-cli from this fork:
 ```sh
